@@ -1,0 +1,629 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent;
+    padding: 1rem 0;
+    /* Ubah atau tambahkan transisi ini */
+    transition: top 0.4s ease-in-out; 
+}
+
+/* Ini adalah class baru untuk menyembunyikan header */
+.header-hidden {
+    top: -100px; /* Pindahkan header ke atas sejauh 100px (di luar layar) */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #1f2937;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    border-radius: 6px;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #7c3aed;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    /* Lapisan warna dihapus, dan URL gambar diganti */
+    background: url('../img/background.png') no-repeat center center/cover;
+    background-size: cover;      /* Biarkan ini agar gambar memenuhi layar */
+    background-position: center; /* Biarkan ini agar gambar selalu di tengah */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero-content h1 {
+    /* Ukurannya dikecilkan kembali agar seimbang */
+    font-size: clamp(2.8rem, 6.5vw, 4.5rem); 
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.search-form {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Mengatur jarak antar kolom di grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; /* Jarak dikecilkan */
+    margin-bottom: 1.5rem;
+}
+
+/* Mengecilkan teks label (Dari Kota, dll) */
+.form-field label {
+    display: block;
+    color: #6b7280;
+    font-size: 0.85rem; /* Font label dikecilkan */
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+/* Mengecilkan kotak input dan isinya */
+.form-field input,
+.form-field select {
+    width: 100%;
+    padding: 0.65rem;   /* Jarak dalam (padding) dikurangi */
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.9rem;  /* Font isian dikecilkan */
+    color: #1f2937;
+}
+
+/* Menyesuaikan ukuran tombol agar serasi */
+.search-btn {
+    width: 100%;
+    background: linear-gradient(90deg, #ec4899, #7c3aed);
+    color: white;
+    padding: 0.8rem 2rem; /* Padding disesuaikan */
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;      /* Font dikecilkan */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(236, 72, 153, 0.4);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mouse {
+    width: 24px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 12px;
+    position: relative;
+}
+
+.scroll-dot {
+    width: 4px;
+    height: 12px;
+    background: white;
+    border-radius: 2px;
+    margin: 8px auto 0;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Sections */
+.section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 3rem;
+}
+
+.section-gray {
+    background: #f9fafb;
+}
+
+/* About Section */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.about-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.about-images img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.about-images img:nth-child(2) {
+    margin-top: 2rem;
+}
+
+.about-images img:nth-child(3) {
+    margin-top: -2rem;
+}
+
+/* Blog Section */
+.blog-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.blog-content h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.blog-content p {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.read-more {
+    color: #7c3aed;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: #5b21b6;
+}
+
+/* Gallery Section */
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.tab-indicators {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tab-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.tab-dot.active {
+    background: #7c3aed;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Testimonials */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+.author-info h4 {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.author-info p {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.testimonial-card > p {
+    color: #4b5563;
+}
+
+.stars {
+    display: flex;
+    gap: 2px;
+    margin-top: 1rem;
+}
+
+.star {
+    width: 16px;
+    height: 16px;
+    color: #fbbf24;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    color: white;
+    text-align: center;
+    padding: 5rem 0;
+}
+
+.cta-section h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Footer */
+footer {
+    background: #1f2937;
+    color: white;
+    padding: 5rem 0 2rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem; /* Jarak antar kolom dibuat lebih lebar agar bernapas */
+    margin-bottom: 3rem;
+}
+
+.footer-section h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem; /* Jarak bawah judul diseragamkan dan diperbesar */
+}
+
+/* Sedikit memperbesar ikon sosial media agar lebih seimbang */
+.social-icons svg {
+    width: 22px;
+    height: 22px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid #374151;
+    padding-top: 2rem;
+    text-align: center;
+    color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .desktop-nav, .header-right .language-selector, .header-right .btn-primary {
+        display: none;
+    }
+
+    .about-grid,
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-images {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about-images img:nth-child(2),
+    .about-images img:nth-child(3) {
+        margin-top: 0;
+    }
+
+}
+
+/* Mobile Menu */
+.mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    padding: 1rem;
+}
+
+.mobile-nav.active {
+    display: block;
+}
+
+.mobile-nav a {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    color: #4b5563;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-nav a:last-child {
+    border-bottom: none;
+}
+
+.mobile-nav .btn-primary {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* --- Styling Tambahan untuk Footer --- */
+
+/* Menata daftar kontak (email, telp, alamat) */
+.contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antara ikon dan teks */
+    margin-bottom: 0.75rem;
+    color: #9ca3af;
+}
+
+.contact-item a {
+    color: #9ca3af;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    color: white;
+}
+
+.contact-item svg {
+    flex-shrink: 0; /* Mencegah ikon jadi gepeng */
+}
+
+/* Menata ikon sosial media */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    color: #9ca3af;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: white;
+    transform: translateY(-3px); /* Efek sedikit terangkat saat di-hover */
+}
