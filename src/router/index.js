@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import TripView from '../views/TripView.vue' // <-- 1. IMPOR FILE BARU
+import SuccessView from '../views/SuccessView.vue' // <-- 1. IMPOR FILE BARU
+
 
 const routes = [
   {
@@ -21,9 +23,14 @@ const routes = [
     component: RegisterView
   },
   {
-    path: '/pesan-trip', // <-- 2. TAMBAHKAN ROUTE BARU
+    path: '/pesan-trip',
     name: 'PesanTrip',
     component: TripView
+  },
+  {
+    path: '/sukses',
+    name: 'Success',
+    component: SuccessView
   }
 ]
 

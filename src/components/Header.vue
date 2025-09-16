@@ -10,10 +10,10 @@
 
         <nav class="desktop-nav">
           <RouterLink to="/">Beranda</RouterLink>
-          <a href="/#tentang">Tentang</a>
-          <a href="/#blog">Blog</a>
-          <a href="/#galeri">Galeri</a>
-          <a href="/#kontak">Kontak</a>
+          <RouterLink to="/#tentang">Tentang</RouterLink>
+          <RouterLink to="/#blog">Blog</RouterLink>
+          <RouterLink to="/#galeri">Galeri</RouterLink>
+          <RouterLink to="/#kontak">Kontak</RouterLink>
         </nav>
 
         <div class="header-right">
@@ -29,10 +29,10 @@
 
     <div class="mobile-nav" :class="{ 'active': isMobileNavActive }">
       <RouterLink to="/" @click="closeMobileMenu">Beranda</RouterLink>
-      <a href="/#tentang" @click="closeMobileMenu">Tentang</a>
-      <a href="/#blog" @click="closeMobileMenu">Blog</a>
-      <a href="/#galeri" @click="closeMobileMenu">Galeri</a>
-      <a href="/#kontak" @click="closeMobileMenu">Kontak</a>
+      <RouterLink to="/#tentang" @click="closeMobileMenu">Tentang</RouterLink>
+      <RouterLink to="/#blog" @click="closeMobileMenu">Blog</RouterLink>
+      <RouterLink to="/#galeri" @click="closeMobileMenu">Galeri</RouterLink>
+      <RouterLink to="/#kontak" @click="closeMobileMenu">Kontak</RouterLink>
       <RouterLink to="/login" class="btn-primary" @click="closeMobileMenu">Login</RouterLink>
     </div>
   </header>
@@ -68,12 +68,10 @@ function closeMobileMenu() {
 }
 
 // --- Lifecycle Hooks untuk Event Scroll ---
-// Memasang event listener saat komponen pertama kali dimuat
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
 });
 
-// Melepas event listener saat komponen dihancurkan (untuk mencegah memory leak)
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll);
 });
