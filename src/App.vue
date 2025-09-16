@@ -1,7 +1,7 @@
 <template>
   <Header v-if="showLayout" />
 
-  <RouterView />
+  <RouterView :key="route.fullPath" />
 
   <Footer v-if="showLayout" />
 </template>
@@ -16,12 +16,18 @@ import Footer from './components/Footer.vue';
 const route = useRoute();
 
 // Daftar nama rute di mana Header & Footer akan disembunyikan
-const hiddenLayoutRoutes = ['Login', 'Register', 'PesanTrip', 'Success'];
+const hiddenLayoutRoutes = [
+  'Login',
+  'Register',
+  'PesanTrip',
+  'Success',
+  'BlogDetail',
+  'Account'
+];
 
 // Computed property yang akan bernilai true atau false
 const showLayout = computed(() => {
-  // Jika nama rute saat ini TIDAK ada di dalam daftar hiddenLayoutRoutes,
-  // maka showLayout akan bernilai true.
+  if (!route.name) return true;
   return !hiddenLayoutRoutes.includes(route.name);
 });
 </script>

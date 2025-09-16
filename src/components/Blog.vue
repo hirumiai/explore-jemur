@@ -11,7 +11,7 @@
                     <p>
                         Menjelajahi pesona wisata bahari Sumatera dan Malaka yang menyajikan pengalaman luar biasa dengan keindahan alam yang memukau. Dari pantai berpasir putih hingga kehidupan bawah laut yang menawan, setiap momen akan menjadi kenangan tak terlupakan.
                     </p>
-                    <a href="#" class="read-more">Baca →</a>
+                    <RouterLink to="/blog/antara-sumatera-dan-malaka" class="read-more">Baca →</RouterLink>
                 </div>
             </div>
         </div>
