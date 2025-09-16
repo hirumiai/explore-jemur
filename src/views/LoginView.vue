@@ -25,20 +25,31 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'; // 1. Impor useRouter
+
+// 2. Dapatkan akses ke instance router
+const router = useRouter();
+
 function handleLogin() {
-  // Nanti di sini kita akan tambahkan logika untuk mengirim data login ke backend
-  alert('Logika login belum diimplementasikan.');
+  // Di sini adalah tempat logika login ke backend nantinya.
+  // Untuk sekarang, kita anggap login selalu berhasil.
+
+  console.log('Login berhasil, mengarahkan ke halaman akun...');
+
+  // 3. Gunakan router.push() untuk pindah ke halaman '/akun'
+  router.push('/akun');
 }
 </script>
 
 <style>
+/* (Tidak ada perubahan pada CSS, jadi biarkan seperti sebelumnya) */
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding-top: 80px; /* Memberi jarak dari header */
-  background-color: #f9fafb; /* Warna latar yang soft */
+  padding-top: 80px;
+  background-color: #f9fafb;
 }
 .auth-card {
   background: white;
